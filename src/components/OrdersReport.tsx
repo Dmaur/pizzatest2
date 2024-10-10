@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import { getJSONData } from '@/tools/Toolkit';
 import { Orders, Order } from '@/tools/orders.model';
 
+
 export default function OrdersReport({setAppState, appState}:{setAppState:Function, appState:number}) {
     // retrieve server sided script
     const RETRIEVE_SCRIPT:string = "https://www.seanmorrow.ca/_lessons/retrieveOrder.php";
@@ -24,15 +25,18 @@ export default function OrdersReport({setAppState, appState}:{setAppState:Functi
 
     // -------------------------- use effects
     useEffect(() => {
-        if (appState == 2) getOrders();
+        if (appState == 2) {
+            getOrders()};
     }, [appState]);
+
+   
 
     // -------------------------- state variables
     const [orders, setOrders] = useState<Order[]>([]);
   
     if (appState == 1) {
         return (<>No orders retrieved...</>);
-    } else if (appState == 3) {
+    }  else if (appState == 3) {
         return (
             <>
             !!! render out orders content here !!!
