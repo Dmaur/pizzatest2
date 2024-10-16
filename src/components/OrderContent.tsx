@@ -3,7 +3,7 @@
 import { Orders, Order } from "@/tools/orders.model";
 
 export default function OrderContent({orders}: {orders:Order[]}){
-
+``
     
     return(
         <>
