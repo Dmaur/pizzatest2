@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 
 import { getJSONData } from '@/tools/Toolkit';
 import { Orders, Order } from '@/tools/orders.model';
+import OrderContent from "./OrderContent";
 
 
 export default function OrdersReport({setAppState, appState}:{setAppState:Function, appState:number}) {
@@ -13,10 +14,11 @@ export default function OrdersReport({setAppState, appState}:{setAppState:Functi
     // -------------------------- private methods
     const getOrders = async () => {
         const data:Orders = await getJSONData(RETRIEVE_SCRIPT, false, true);
-        console.log(data);
+        // console.log(data);
 
         // save it in a state variable - because it is used in JSX and needs to persist
         setOrders(data.orders);
+   
 
         // data all loaded! Change app state of web app
         setAppState(3);
@@ -39,7 +41,7 @@ export default function OrdersReport({setAppState, appState}:{setAppState:Functi
     }  else if (appState == 3) {
         return (
             <>
-            !!! render out orders content here !!!
+            <OrderContent orders={orders} />
             </>
         );
     }
